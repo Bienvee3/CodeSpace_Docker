@@ -4,7 +4,9 @@
         "dockerfile": "Dockerfile"
     },
     "features": {
-        "docker-in-docker": "latest"
+        "docker-in-docker": "latest",
+        "dockerSocketPath": "/var/run/docker.sock",
+        "dockerComposeVersion": "latest"
     },
     "mounts": [
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
