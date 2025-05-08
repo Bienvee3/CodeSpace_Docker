@@ -54,8 +54,39 @@ Un contenedor se basa en una **imagen**, que es como una plantilla inmutable con
 | Rendimiento          | Alto                        | Menor debido a la emulación |
 | Portabilidad         | Muy alta                    | Limitada                    |
 
-## Ejemplo básico: Ejecutar un contenedor
+## Comandos básicos de Docker
 
-```bash
-# Ejecutar un contenedor con Nginx
-docker run -d -p 8080:80 nginx
+### Información general
+
+- `docker version` — Muestra la versión instalada de Docker.
+- `docker info` — Muestra información sobre el sistema Docker (contenedores, imágenes, recursos, etc.).
+
+### Contenedores
+
+- `docker run nginx` — Ejecuta un contenedor a partir de la imagen de Nginx.
+- `docker run -it ubuntu bash` — Ejecuta un contenedor de Ubuntu con terminal interactiva.
+- `docker run -d -p 8080:80 nginx` — Ejecuta Nginx en segundo plano y expone el puerto 80 al 8080 del host.
+- `docker ps` — Lista los contenedores en ejecución.
+- `docker ps -a` — Lista todos los contenedores, incluyendo los detenidos.
+- `docker stop <nombre|id>` — Detiene un contenedor.
+- `docker start <nombre|id>` — Inicia un contenedor detenido.
+- `docker restart <nombre|id>` — Reinicia un contenedor.
+- `docker rm <nombre|id>` — Elimina un contenedor detenido.
+
+### Imágenes
+
+- `docker images` — Lista las imágenes disponibles localmente.
+- `docker pull nginx` — Descarga una imagen desde Docker Hub.
+- `docker build -t mi-imagen .` — Construye una imagen desde un Dockerfile en el directorio actual.
+- `docker rmi mi-imagen` — Elimina una imagen local.
+
+### Dockerfile
+
+Un `Dockerfile` define cómo construir una imagen. Ejemplo básico:
+
+```Dockerfile
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["npm", "start"]
