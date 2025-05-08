@@ -1,6 +1,5 @@
 FROM 
-mcr.microsoft.com/devcontainers/base:
-ubuntu
+mcr.microsoft.com/devcontainers/base:ubuntu
 
 # Install Docker CLI
 RUN apt-get update && apt-get
